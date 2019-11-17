@@ -8,17 +8,11 @@ RUN apt-get -y install ./code.deb
 RUN curl -SL https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2020-2/FRC-2020-Linux-Toolchain-7.3.0.tar.gz | sh -c 'mkdir -p /usr/local && cd /usr/local && tar xzf - --strip-components=2'
 #INSTALL AND BUILD VSCODE PLUGIN
 RUN mkdir vscode-plugin
-RUN curl -sSLf https://github.com/wpilibsuite/vscode-wpilib/archive/v2020.1.1-beta-2.tar.gz | tar -C vscode-plugin --strip-components 1 -xzvf -
-WORKDIR /opt/vscode-plugin
-RUN ./gradlew build updateVersions updateAllDependencies
-WORKDIR /opt/vscode-plugin/vscode-wpilib
-RUN npm install
-RUN npm run gulp
-RUN npm run webpack
-RUN npm run vscePackage
+RUN curl -sSLf https://api.github.com/repos/wpilibsuite/vscode-wpilib/releases/latest | grep browser_download_url.*vsix | cut -d '"' -f 4 | wget -qi - 
 RUN cp *.vsix /opt/vscode-wpilib.vsix
 WORKDIR /opt/vscode-plugin/wpilib-utility-standalone
 RUN npm install
+#INSTALL AND BUILD WPILIB LIBRARIES 
 WORKDIR /opt
 RUN mkdir frc-2020
 RUN curl -sSLf https://github.com/wpilibsuite/allwpilib/archive/v2020.1.1-beta-2.tar.gz | tar -C frc-2020 --strip-components 1 -xzvf -
