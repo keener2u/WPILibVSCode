@@ -23,6 +23,7 @@ WORKDIR /opt
 RUN mkdir frc-2020
 RUN curl -sSLf https://github.com/wpilibsuite/allwpilib/archive/v2020.1.1-beta-2.tar.gz | tar -C frc-2020 --strip-components 1 -xzvf -
 WORKDIR /opt/workspace
+RUN git clone https://github.com/Team3128/3128-robot-2019.git
 #RUN ./gradlew build -PmakeSim
 #MAKE USER LOCAL AND INSTALL VSCODE EXTENSIONS
 RUN useradd -c 'robouser' -m -d /home/robouser -s /bin/bash robouser
