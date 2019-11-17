@@ -30,4 +30,5 @@ RUN chown -R robouser.robouser /opt
 USER robouser
 ENV HOME /home/robouser
 RUN /usr/bin/code --install-extension /opt/vscode-wpilib.vsix
+COPY settings.json /home/robouser/.config/Code/User/settings.json
 VOLUME ["/home/robouser"]
