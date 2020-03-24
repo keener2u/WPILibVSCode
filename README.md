@@ -9,12 +9,12 @@
  docker run -it --rm --volume /tmp/.X11-unix:/tmp/.X11-unix:ro --env DISPLAY=host.docker.internal:0 --env RUNUSER_UID=$(id -u) --mount source=vscode-vol,target=/home/robouser --volume /home/robouser/projects/.vscode keener2u/wpilibvscode
 ```
 
-# Ubuntu How-to GUI Docker Run Setup:
+# Ubuntu Run Setup:
 ``` 
 installDockerUbuntu.sh
 ./runVSCode.sh
 ````
-# ChromeBook:
+# ChromeBook Run Setup:
 ``` 
 installDockerChrome.sh
 ./runVSCode.sh
